@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Report View</title>
+        <link href=" {% static 'styles\style.css' %} " rel="stylesheet" type="text/css" />
+		<style>
+			.brand_logo_container {
+				margin-top: 190px;
+				margin-left: 230px;
+                position: absolute;
+                height: 170px;
+                width: 170px;
+                top: -75px;
+                border-radius: 50%;
+                background: #60a3bc;
+                padding: 10px;
+                text-align: center;
+            }
+            .brand_logo {
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                border: 2px solid white;
+			}
+			.maintext{
+					margin-top: 120px;
+			}
+            .lnk{
+				text-decoration: underline;
+			}
+			.butt{
+				width: 190px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #1db096;
+    border-radius: 20px;
+    box-shadow: 5px 10px 30px rgba(24,139,119,0.2);
+			}
+		</style>
+    </head>
+    <body>
+        <section id="main">
+            <nav>                    
+                <span class="menu-space"></span>
+                <ul class="menu">
+                    <li class="active"><a href="#">dashboard</a></li>
+                    <li><a href="userpage">Back</a></li>
+                    
+                </ul>
+            </nav>
+        </section>
+            <section class ="siripic">
+                <div class="image">
+                <img src="{% static 'images/project.jpg' %}" alt="image" >
+            </div>
+        <div class= "maintext">
+			<center>				
+						<div class="d-flex justify-content-center">
+							<div class="brand_logo_container">
+								<img src="{% static 'images/login-icon.png' %}" class="brand_logo" alt="Logo"><br>
+							</div>
+						</div>
+						<div>
+							<br><br><br>
+						<div class="p">NAME:  {{user.first_name}} {{user.last_name}}</div><br>
+						<div class="p">Email:  {{user.email}}</div><br>
+						<div class="p">Date Joined:  {{user.date_joined}}</div><br>
+						<div class="p">Last Login:  {{user.last_login}}</div><br>
+					</div>
+    
+					<form id="form" name="contact-form" method="post" action="{% url 'script' %}" >
+					{% csrf_token %}
+					<input 	type="hidden" name="email" 	value={{user.email}} required="required"	 placeholder="Your Email"><br><br>
+					 <p><input type="submit" class="butt" value="Send Message" name="contact-submit"><p><hr>
+					
+					
+					<!-- <button onclick="location.href='{% url 'script' %}'" >submit</button><hr> -->
+						{% if data %}
+						{{data }}
+						<a class="lnk" href="key">View Your Data Here</a>
+						{% endif %}
+						</center>
+        	</div>
+		</form>
+            </section>
+        
+    </body>
+</html>
+
+<!--
+import smtplib
+import random
+gmail_user ="nodelevelmajorproject@gmail.com"
+gmail_password = "nodelevel@1234"
+def send_email(subject, msg, to):
+    publicKeyNode,privateKeyOfCurve=get
+    try:
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.ehlo()
+        server.login(gmail_user, gmail_password)
+        message = 'Subject: {}\n\n{}\nPublic Key:{}\n  Private Key:{}'.format(subject, msg,publicKeyNode,privateKeyOfCurve)
+        server.sendmail(gmail_user, to, message)
+        server.close()
+        print("Success: Email sent!")
+    except Exception as e:
+        print(e)
+        print("Email failed to send.")
+email="lakshmi89547@gmail.com"
+send_email("Key Request Activation Response","Use This Key for Download File :", email)
+-->

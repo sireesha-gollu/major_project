@@ -1,0 +1,19 @@
+table{
+	border: 2px solid;
+	margin: 400px auto;
+	position: center;
+}
+th{
+	font-size: 40px;
+	border: 2px solid;
+	width: 250px;
+	text-align: center;
+	font-family: Sans-serif;
+}
+td{
+	font-size: 30px;
+	border: 2px solid;
+	width: 250px;
+	text-align: center;
+	font-family: Sans-serif;
+}
